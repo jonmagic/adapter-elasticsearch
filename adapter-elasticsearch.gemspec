@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency 'adapter', '~> 0.5.2'
-  s.add_dependency 'elasticsearch-client', '~> 0.0.3'
+  s.add_dependency 'elasticsearch-client', '~> 0.0.4'
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec', '~> 2.8.0'
