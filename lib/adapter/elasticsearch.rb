@@ -11,7 +11,11 @@ module Adapter
     end
 
     def write(key, value)
-      client.add(@options[:type], key_for(key), encode(value))
+      options = {}
+      if @options.key?(:parent) && value.is_a?(Hash)
+        options[:parent] = value[@options[:parent].to_s]
+      end
+      client.add(@options[:type], key_for(key), encode(value), options)
     end
 
     def delete(key)
