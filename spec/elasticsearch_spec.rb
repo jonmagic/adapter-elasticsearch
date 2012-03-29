@@ -15,4 +15,21 @@ describe Adapter::ElasticSearch do
   let(:adapter) { @adapter }
 
   it_should_behave_like 'an elasticsearch adapter'
+
+  describe "#write" do
+    context "with parent" do
+      let(:adapter) { Adapter[:elasticsearch].new(@client, {:type => 'document', :parent => :library}) }
+
+      it "sets parent parameter" do
+        params = {'foo' => 'bar', 'library' => '2'}
+        @client.should_receive(:add).with('document', '123', params, :parent => '2')
+        adapter.write('123', params)
+      end
+
+      it "does not set parent on non-hash values" do
+        @client.should_receive(:add).with('document', '123', {'_value' => '456'}, {})
+        adapter.write('123', '456')
+      end
+    end
+  end
 end

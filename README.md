@@ -4,10 +4,6 @@ ElasticSearch adapter for adapter gem.
 
 See examples/ or specs/ for usage.
 
-## ToDo
-
-* add spec for :parent option
-
 ## Note on Patches/Pull Requests
 
 * Fork the project.
